@@ -7,7 +7,7 @@ function SquareNodes(props) {
         props.setGrid(prevGrid => {
             const newGrid = [...prevGrid];
 
-            // set node type based on config selection
+            // set node type based on config panel selection
             if(props.nodeSelect === 'start') {
                 newGrid[props.y][props.x].nodeType = 'start';
                 props.setSourceNode(prevSourceNode => ({
