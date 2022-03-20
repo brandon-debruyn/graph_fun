@@ -1,3 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-image: linear-gradient(120deg, #a6f665 0%, #fbfd85 100%);
+    color: white;
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+}
+
+.config-bar {
+    width: 100%;
+    height: 12vh;
+    text-align: center;
+}
+
+.config-bar-container {
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    margin-top: 1%
+}
+
+header {
+    font-size: 2rem;
+}
+
 .graph {
     height: 100%;
     width: 100%;
@@ -9,7 +38,7 @@
     box-shadow: 1px 0 0 black;
 }
 
-.graph {
+.grid {
     width: 100%;
     height: 80vh;
 }
@@ -31,4 +60,8 @@
     padding: 0;
     text-align: center;
     width: 2rem;
-  }
+}
+
+
+
+ 
