@@ -12,9 +12,11 @@ function App() {
     // individual nodes - returns each square's information as a object
     const squareNode = (x, y) => {
       return {
-        x: x,        // x coordinate
-        y: y,        // y coordinate
-        nodeType: 'none'
+        x: x,               // x coordinate
+        y: y,               // y coordinate
+        nodeType: 'none',   // wall node
+        visited: false,     // algorithm visit
+        weight: 1           // algorithm weight
       }
     }
 
@@ -63,9 +65,9 @@ function App() {
           </header>
           <button className='run-algorithm'>Visualize Algorithm</button>
           <div className='config-bar-settings'>
-            <button className='start-node' onClick={handleSetStartNode}>Set Start Node</button>
+            <button className='start-node-btn' onClick={handleSetStartNode}>Set Start Node</button>
             <button className='wall-nodes' onClick={handleSetWallNodes}>Set Wall Nodes</button>
-            <button className='end-node' onClick={handleSetDestNode}>Set End Node</button>
+            <button className='end-node-btn' onClick={handleSetDestNode}>Set End Node</button>
           </div>
         </div>
       </div>

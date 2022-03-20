@@ -40,17 +40,16 @@ function SquareNodes(props) {
             
             if(props.nodeSelect === 'wall') {
                 newGrid[props.y][props.x].nodeType = 'wall';
-
             }
 
             return newGrid;
         })
     }
-
+    
     return(
         <div 
-            className="squareNode"
-            id={props.x + "-" + props.y}
+            className={`squareNode ${props.nodeType}-node`} 
+            id={`${props.x} - ${props.y}`}
             onClick={() => {setNode()}}
         ></div>
     );
