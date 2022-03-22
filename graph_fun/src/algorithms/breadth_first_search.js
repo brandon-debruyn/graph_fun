@@ -1,26 +1,31 @@
-import React from 'react'
 
-function breadth_first_search(grid, source, no_vertices) {
-    var queue = []; // use queue.shift() -> returns first ele
-    id = 0;
-    visited = new Array.fill(0, 0, no_vertices);
-    
+function breadth_first_search(grid, source) {
+    var queue = [];
+    let dist = 0;
+    let visited = [];
+
+    // each node has a visited (bool) 
+    // each node has adjlist not accounting for walls
+            
     
     queue.push(source);
 
     while(queue.length !== 0) {
-        let v = queue.shift();
+        let v = queue.shift(); // return first element
 
-        if(!visited[v]) {
-            visited[v] = ++id;
+        if(!v.visited) {
+            v.distance = ++dist;
+            visited.push(v);
 
-            for(let u of adjacency_list[v]) {
-                if(!visited[u]) {
+            for(let u of v.adjList) {
+                if( !(grid[u.adjX][u.adjY].visited) ) {
                     queue.push(u);
                 }
             }
         }
     }
+
+    console.log(visited);
     
 }
 
