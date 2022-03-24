@@ -6,7 +6,6 @@ function breadth_first_search(grid, source) {
 
     // each node has a visited (bool) 
     // each node has adjlist not accounting for walls
-            
     
     queue.push(source);
 
@@ -14,18 +13,20 @@ function breadth_first_search(grid, source) {
         let v = queue.shift(); // return first element
 
         if(!v.visited) {
-            v.distance = ++dist;
+            dist++;
+            v.distance = dist;
             visited.push(v);
 
             for(let u of v.adjList) {
                 if( !(grid[u.adjX][u.adjY].visited) ) {
-                    queue.push(u);
+                    
+                    queue.push(grid[u.adjX][u.adjY]);
                 }
             }
         }
     }
 
-    console.log(visited);
+    //console.log(visited);
     
 }
 

@@ -12,10 +12,9 @@ function SquareNodes(props) {
                 newGrid[props.y][props.x].nodeType = 'start';
                 props.setSourceNode(prevSourceNode => ({
                     ...prevSourceNode,
-                    sourceNode: {
-                        x: props.x, 
-                        y: props.y
-                    }
+                    x: props.x,
+                    y: props.y
+                    
                 }));
             }
             
@@ -23,10 +22,8 @@ function SquareNodes(props) {
                 newGrid[props.y][props.x].nodeType = 'dest';
                 props.setDestNode(prevDestNode => ({
                     ...prevDestNode, 
-                    destNode: {
-                        x: props.x,
-                        y: props.y
-                    }
+                    x: props.x,
+                    y: props.y
                 }));
             }
             

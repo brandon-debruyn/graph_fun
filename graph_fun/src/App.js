@@ -151,7 +151,7 @@ function App() {
         }
       }
 
-      const adjList = getNeigbours(x, y);
+      let adjList = getNeigbours(x, y);
 
       return {
         x: x,               // x coordinate
@@ -203,7 +203,7 @@ function App() {
 
   function visualizeBFS(e) {
     e.preventDefault();
-    breadth_first_search(grid, sourceNode);
+    breadth_first_search(grid, grid[sourceNode.x][sourceNode.y]);
   }
 
   return(
