@@ -1,6 +1,12 @@
-import React from 'react'
+import { React, useEffect, useState } from 'react'
 
 function SquareNodes(props) {
+
+    const[isVisited, setIsVisited] = useState(props.visited);
+
+    useEffect(() => {
+
+    }, [isVisited]);
 
     function setNode() {
         
@@ -37,7 +43,7 @@ function SquareNodes(props) {
     
     return(
         <div 
-            className={`squareNode ${props.nodeType}-node`} 
+            className={`squareNode ${props.nodeType}-node visited-${props.visited ? 'true' : 'false'}`} 
             id={`${props.x} - ${props.y}`}
             onClick={() => {setNode()}}
         ></div>

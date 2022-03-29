@@ -18,6 +18,7 @@ function App() {
     // individual nodes - returns each square's information as a object
     const squareNode = (x, y) => {
 
+      /* more efficient fix for getNeigbours required ---> tbd */
       const getNeigbours = (x, y) => {
 
         // corner nodes
@@ -160,7 +161,8 @@ function App() {
         visited: false,     // algorithm visit
         weight: 1,          // algorithm weight
         adjList: adjList,   // adjacency list for each node
-        distance: Infinity  // distance w.r.t source node
+        distance: Infinity, // distance w.r.t source node
+        prevNode: {}
       }
     }
 
@@ -203,7 +205,7 @@ function App() {
 
   function visualizeBFS(e) {
     e.preventDefault();
-    breadth_first_search(grid, grid[sourceNode.x][sourceNode.y]);
+    breadth_first_search(grid, grid[sourceNode.y][sourceNode.x], grid[destNode.y][destNode.x]);
   }
 
   return(
@@ -241,7 +243,8 @@ function App() {
                       destNode={destNode}
                       setDestNode={setDestNode}            
                       nodeSelect={nodeSelect}
-                      setNodeSelect={setNodeSelect}          
+                      setNodeSelect={setNodeSelect}   
+                      visited={node.visited}  
                     />
                   );
                 })
