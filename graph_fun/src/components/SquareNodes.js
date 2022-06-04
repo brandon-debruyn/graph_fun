@@ -32,6 +32,10 @@ function SquareNodes(props) {
                     y: props.y
                 }));
             }
+
+            if(props.nodeSelect === 'path') {
+                newGrid[props.y][props.x].nodeType = 'path';
+            }
             
             if(props.nodeSelect === 'wall') {
                 newGrid[props.y][props.x].nodeType = 'wall';

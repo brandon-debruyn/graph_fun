@@ -98,6 +98,7 @@ header {
     width: 2rem;
 }
 
+/*
 .visited-true {
     background: rgb(156, 74, 156);
     opacity: 5%;
@@ -109,5 +110,18 @@ header {
     padding: 0;
     text-align: center;
     width: 2rem;
+    
+}*/
+
+.path-node {
+    background: rgb(156, 74, 156);
+    opacity: 5%;
+    border: 1px solid #999;
+    float: left;
+    height: 2rem;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 2rem;
 }
- 

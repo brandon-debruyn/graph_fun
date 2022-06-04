@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 // components 
 import SquareNodes from './components/SquareNodes';
-import breadth_first_search from './algorithms/breadth_first_search';
+import bfs from './algorithms/breadth_first_search';
 
 // global constants
 const NO_GRID_ROWS = 20;
@@ -16,38 +16,44 @@ function App() {
   const [grid, setGrid] = useState(() => {
     // individual nodes - returns each square's information as a object
     const squareNode = (x, y) => {
-      let adjList = []
-      /* more efficient fix for getNeigbours required ---> tbd */
-      const getNeigbours = (x, y) => {
-        let dirs = [
-          [-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1],
-          [1, 0], [1, 1],
-          ]
-        
-        for(let i=0; i<dirs.length; i++) {
-          nx = x + dirs[i][0]
-          ny = y + dirs[i][1]
 
-          if( !(0 <= nx <= NO_GRID_COLS) && !(0 <= ny <= NO_GRID_ROWS) ) {
-            continue
-          }        
-          if(nodeType == 'wall') {
-            continue
-          }  
+      const getNeigbours = (x, y) => {
+        let adjList = [];
+        const dirs = [[-1, 0], [0, -1], [0, 1], [1, 0]];
+        
           
-          adjList.push([nx, ny])
+        
+        for(let i in dirs) {
+          
+          let nx = x + dirs[i][0];
+          let ny = y + dirs[i][1];
+
+          if(nx < 0 || nx > (NO_GRID_COLS - 1)) {
+            continue;
+          }
+
+          if(ny < 0 || ny > (NO_GRID_ROWS - 1)) {
+            continue;
+          }
+
+                   
+          adjList.push({adjX: nx, adjY: ny});
         }
+
+        return adjList;
       }
 
-      adjList = getNeigbours(x, y)      
-
+      
+      let adj = getNeigbours(x, y); 
+      
+      
       return {
         x: x,               // x coordinate
         y: y,               // y coordinate
         nodeType: 'none',   // wall node
         visited: false,     // algorithm visit
         weight: 1,          // algorithm weight
-        adjList: adjList,   // adjacency list for each node
+        adjList: adj,   // adjacency list for each node
         distance: Infinity, // distance w.r.t source node
         prevNode: {}
       }
@@ -92,7 +98,8 @@ function App() {
 
   function visualizeBFS(e) {
     e.preventDefault();
-    breadth_first_search(grid, grid[sourceNode.y][sourceNode.x], grid[destNode.y][destNode.x]);
+    bfs(grid, grid[sourceNode.y][sourceNode.x], grid[destNode.y][destNode.x]);
+    setNodeSelect('path');
   }
 
   return(
